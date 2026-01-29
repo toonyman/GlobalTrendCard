@@ -41,3 +41,6 @@
     * 헤더에 'Raw Data' 버튼을 추가했습니다.
     * 클릭 시 전체 트렌드 데이터를 테이블 형태로 보여주는 모달창을 구현했습니다.
     * 모달창을 위한 HTML, CSS, JavaScript 코드를 추가했습니다.
+
+## Google Tag Integration
+- Google Tag (gtag.js) has been added to `index.html` within the `<head>` section for analytics tracking.
