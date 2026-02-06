@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,79 +9,138 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="blog.css">
 </head>
+
 <body>
     <div class="noise-overlay"></div>
-    
-    <!-- Main Header with Semantic HTML -->
+
+    <!-- Main Header -->
     <header role="banner">
         <div class="header-content">
-            <h1 class="logo">◉ GLOBAL TRENDS</h1>
-            <nav role="navigation" aria-label="Main navigation">
-                <div class="main-nav">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="blog.html" class="nav-link">Blog</a>
-                    <a href="about.html" class="nav-link">About</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </div>
-                <div class="controls">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-                        <span id="themeIcon">🌙</span>
+            <h1 class="logo">
+                <span style="color: var(--accent-primary);">◉</span> GLOBAL TRENDS
+            </h1>
+
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <nav role="navigation" aria-label="Main navigation">
+                    <div class="main-nav">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="blog.html" class="nav-link active">Blog</a>
+                        <a href="about.html" class="nav-link">About</a>
+                    </div>
+                </nav>
+
+                <div class="share-buttons">
+                    <button class="share-btn" aria-label="Meta/Facebook에 공유">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.15 5.96C15.21 5.96 16.12 6.04 16.12 6.04V8.51H15.01C13.77 8.51 13.38 9.28 13.38 10.07V12.06H16.15L15.71 14.96H13.38V21.96C17.61 21.57 21 17.48 21 12.06C21 6.53 16.5 2.04 12 2.04Z" />
+                        </svg>
+                    </button>
+                    <button class="share-btn" aria-label="X/Twitter에 공유">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </button>
+                    <button class="share-btn" aria-label="Copy Link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
                     </button>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
 
-    <main class="main-container">
-        <h1>Our Blog</h1>
-        <div class="blog-posts">
-            <div class="blog-post">
-                <h2>The Future of Artificial Intelligence</h2>
-                <p>Artificial intelligence is rapidly changing the world as we know it. From self-driving cars to personalized medicine, AI is poised to revolutionize every industry. In this article, we explore the latest advancements in AI and what they mean for the future of humanity.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
-            </div>
-            <div class="blog-post">
-                <h2>The Rise of Streaming Services</h2>
-                <p>Streaming services like Netflix, Disney+, and Amazon Prime Video have disrupted the traditional entertainment industry. With more and more consumers cutting the cord, we take a look at the impact of streaming services on Hollywood and what it means for the future of movies and TV shows.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
-            </div>
-            <div class="blog-post">
-                <h2>The World of Sports in the Digital Age</h2>
-                <p>The digital age has transformed the way we consume sports. From live streaming games on our mobile devices to engaging with our favorite teams on social media, we explore how technology is changing the sports landscape and what it means for the future of athletic competition.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
-            </div>
-            <div class="blog-post">
-                <h2>The Shifting Political Landscape</h2>
-                <p>The political landscape is constantly evolving. In this article, we analyze the latest political trends and what they mean for the future of democracy. From the rise of populism to the impact of social media on elections, we delve into the most pressing issues of our time.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
-            </div>
-            <div class="blog-post">
-                <h2>The Gig Economy and the Future of Work</h2>
-                <p>The gig economy has created new opportunities for workers, but it has also raised new challenges. In this article, we examine the pros and cons of the gig economy and what it means for the future of work. From the rights of gig workers to the impact on traditional employment, we explore the changing nature of the modern workforce.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer with SEO Content -->
-    <footer role="contentinfo" style="background: rgba(10, 14, 39, 0.9); padding: 3rem; margin-top: 3rem; color: var(--text-secondary);">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <div style="margin-bottom: 2rem;">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h3 style="color: var(--accent-primary); margin-bottom: 1rem; font-size: 1.2rem; text-align: center;">About Global Trends Bubble</h3>
-                    <p style="line-height: 1.6; text-align: center;">Global Trends Bubble provides real-time visualization of trending topics from around the world. Our interactive treemap helps you discover what's popular across technology, entertainment, sports, politics, and business sectors.</p>
+    <div class="scroll-container">
+        <main class="main-container">
+            <h1>Our Blog</h1>
+            <div class="blog-posts">
+                <div class="blog-post">
+                    <h2>The Future of Artificial Intelligence</h2>
+                    <p>Artificial intelligence is rapidly changing the world as we know it. From self-driving cars to
+                        personalized medicine, AI is poised to revolutionize every industry. In this article, we explore
+                        the
+                        latest advancements in AI and what they mean for the future of humanity.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies
+                        lacinia,
+                        nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies
+                        lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
+                </div>
+                <div class="blog-post">
+                    <h2>The Rise of Streaming Services</h2>
+                    <p>Streaming services like Netflix, Disney+, and Amazon Prime Video have disrupted the traditional
+                        entertainment industry. With more and more consumers cutting the cord, we take a look at the
+                        impact
+                        of streaming services on Hollywood and what it means for the future of movies and TV shows.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies
+                        lacinia,
+                        nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies
+                        lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
+                </div>
+                <div class="blog-post">
+                    <h2>The World of Sports in the Digital Age</h2>
+                    <p>The digital age has transformed the way we consume sports. From live streaming games on our
+                        mobile
+                        devices to engaging with our favorite teams on social media, we explore how technology is
+                        changing
+                        the sports landscape and what it means for the future of athletic competition.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies
+                        lacinia,
+                        nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies
+                        lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
+                </div>
+                <div class="blog-post">
+                    <h2>The Shifting Political Landscape</h2>
+                    <p>The political landscape is constantly evolving. In this article, we analyze the latest political
+                        trends and what they mean for the future of democracy. From the rise of populism to the impact
+                        of
+                        social media on elections, we delve into the most pressing issues of our time.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies
+                        lacinia,
+                        nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies
+                        lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
+                </div>
+                <div class="blog-post">
+                    <h2>The Gig Economy and the Future of Work</h2>
+                    <p>The gig economy has created new opportunities for workers, but it has also raised new challenges.
+                        In
+                        this article, we examine the pros and cons of the gig economy and what it means for the future
+                        of
+                        work. From the rights of gig workers to the impact on traditional employment, we explore the
+                        changing nature of the modern workforce.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies
+                        lacinia,
+                        nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae ultricies
+                        lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
                 </div>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center;">
-                <p>&copy; 2026 Global Trends Bubble. Data powered by Google Trends. All rights reserved.</p>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <a href="privacypolicy.html" style="color: var(--text-secondary); margin: 0 1rem;">Privacy Policy</a>
-                    <a href="termsofservice.html" style="color: var(--text-secondary); margin: 0 1rem;">Terms of Service</a>
-                    <a href="contact.html" style="color: var(--text-secondary); margin: 0 1rem;">Contact Us</a>
-                </p>
+        </main>
+
+        <!-- Footer with SEO Content -->
+        <footer role="contentinfo"
+            style="background: rgba(10, 14, 39, 0.9); padding: 3rem; margin-top: 3rem; color: var(--text-secondary);">
+            <div style="max-width: 1400px; margin: 0 auto;">
+                <div style="margin-bottom: 2rem;">
+                    <div style="max-width: 800px; margin: 0 auto;">
+                        <h3
+                            style="color: var(--accent-primary); margin-bottom: 1rem; font-size: 1.2rem; text-align: center;">
+                            About Global Trends Bubble</h3>
+                        <p style="line-height: 1.6; text-align: center;">Global Trends Bubble provides real-time
+                            visualization of trending topics from around the world. Our interactive treemap helps you
+                            discover what's popular across technology, entertainment, sports, politics, and business
+                            sectors.</p>
+                    </div>
+                </div>
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center;">
+                    <p>&copy; 2026 Global Trends Bubble. Data powered by Google Trends. All rights reserved.</p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
     <script src="main.js"></script>
 </body>
+
 </html>
