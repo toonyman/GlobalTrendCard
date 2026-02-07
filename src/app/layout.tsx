@@ -12,6 +12,9 @@ const notoSansKr = Noto_Sans_KR({
 export const metadata: Metadata = {
   title: "Global Trends Bubble | Real-Time Trending Topics Visualization",
   description: "Discover what's trending globally with our interactive treemap visualization. Track real-time search trends across multiple categories.",
+  verification: {
+    google: "OAv4N25-_EylIfm5Jo5lZ5ldSv2O8fp0g8ipHl3tulQ",
+  },
   other: {
     "google-adsense-account": "ca-pub-7644009675634803",
   },
