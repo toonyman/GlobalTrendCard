@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Header() {
     return (
         <header role="banner">
@@ -9,9 +11,8 @@ export default function Header() {
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <nav role="navigation" aria-label="Main navigation">
                         <div className="main-nav">
-                            <a href="/" className="nav-link active">Home</a>
-
-                            <a href="/about" className="nav-link">About</a>
+                            <Link href="/" className="nav-link active">Home</Link>
+                            <Link href="/about" className="nav-link">About</Link>
                         </div>
                     </nav>
 
