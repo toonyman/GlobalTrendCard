@@ -58,7 +58,7 @@ const generateTrendData = () => {
     return Array.from({ length: 300 }, (_, i) => {
         // Cyclic name selection
         const nameIndex = i % trendNames.length;
-        const name = trendNames[nameIndex] + (Math.floor(i / 100) > 0 ? ` ${Math.floor(i / 100) + 1}` : '');
+        const name = trendNames[nameIndex];
 
         // Correct Category Logic: Map index to 0-4 range based on 20 items per block
         // 0-19: Tech (0), 20-39: Ent (1), etc.
@@ -76,6 +76,9 @@ const generateTrendData = () => {
         const change = (Math.random() - 0.3) * 200;
         const isPositive = change >= 0;
 
+        // Momentum Logic: If rank is high (simulated) and change is wildly positive
+        const isHot = volume > 500000 && change > 50; // Simple threshold for Hot badge
+
         return {
             name,
             category,
@@ -83,6 +86,7 @@ const generateTrendData = () => {
             change: Math.floor(change),
             color: isPositive ? categoryColors[category].positive : categoryColors[category].negative,
             isPositive,
+            isHot,
             peakTime: `${Math.floor(Math.random() * 12) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')} ${Math.random() > 0.5 ? 'AM' : 'PM'}`,
             region: ['Global', 'US', 'EU', 'Asia', 'Americas'][Math.floor(Math.random() * 5)]
         };
@@ -94,12 +98,63 @@ class TreemapView {
         this.container = container;
         this.trends = [];
         this.allTrends = [];
+
+        // Debounced Resize Listener
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (this.trends.length > 0) {
+                    this.render();
+                }
+            }, 200);
+        });
     }
 
     setTrends(trends) {
         this.allTrends = trends;
         this.trends = trends;
         this.render();
+        this.renderDailyBriefing();
+    }
+
+    renderDailyBriefing() {
+        const summaryContainer = document.getElementById('aiSummary');
+        const nameEl = document.getElementById('topTrendName');
+        const volEl = document.getElementById('topTrendVol');
+        const changeEl = document.getElementById('topTrendChange');
+        const linkEl = document.getElementById('topTrendLink');
+
+        // Simulate AI analysis based on top trends
+        const topTrends = [...this.trends].sort((a, b) => b.volume - a.volume).slice(0, 3);
+        if (topTrends.length < 1) return;
+
+        // Populate Top Trend Section
+        if (nameEl && volEl && changeEl) {
+            const top = topTrends[0];
+            nameEl.textContent = top.name;
+            volEl.textContent = (top.volume / 1000).toFixed(0) + 'K'; // e.g. 500K
+            changeEl.textContent = (top.change > 0 ? '+' : '') + top.change + '%';
+            changeEl.style.color = top.change >= 0 ? 'var(--accent-success)' : 'var(--accent-danger)';
+
+            if (linkEl) {
+                linkEl.href = `https://trends.google.com/trends/explore?q=${encodeURIComponent(top.name)}`;
+            }
+        }
+
+        if (!summaryContainer || topTrends.length < 3) return;
+
+        const dominantCat = topTrends[0].category;
+
+        // Simple sentence templates based on data
+        // Ideally this comes from LLM API
+        const sentences = [
+            `<strong>${dominantCat.toUpperCase()} SECTOR DOMINANCE:</strong> The ${dominantCat} sector is leading today's global attention, driven by a surge of interest in <strong>${topTrends[0].name}</strong> which has seen a ${topTrends[0].change}% spike.`,
+            `<strong>RISING MOMENTUM:</strong> <strong>${topTrends[1].name}</strong> follows closely, showing strong engagement patterns indicating a potential breakout trend for the coming hours.`,
+            `<strong>MARKET SENTIMENT:</strong> Overall sentiment appears mixed, but <strong>${topTrends[2].name}</strong> remains a resilient topic despite market volatility.`
+        ];
+
+        summaryContainer.innerHTML = sentences.map(s => `<div class="briefing-item">${s}</div>`).join('');
     }
 
     getSizeClass(volume, maxVolume) {
@@ -292,6 +347,7 @@ class TreemapView {
             if (area > 24000) fontSize = 1.4;
 
             item.innerHTML = `
+                ${trend.isHot ? '<div class="hot-badge">Hot 🔥</div>' : ''}
                 ${showName ? `
                 <div class="item-name" style="font-size: ${fontSize}rem; line-height: 1.1; font-weight: 700; padding: 0.5rem 0.5rem 0 0.5rem;">
                     ${trend.name}
@@ -427,6 +483,39 @@ class TreemapView {
             btn.style.background = 'var(--bg-main)';
             btn.style.borderColor = 'var(--border-subtle)';
             btn.style.color = 'var(--text-primary)';
+        }
+
+        // --- Fetch & Show News (Mock Implementation) ---
+        const newsList = document.getElementById('newsList');
+        if (newsList) {
+            newsList.innerHTML = '<div style="color:var(--text-muted); font-style:italic;">Finding related news...</div>';
+
+            // Validate NewsAPI Key usage
+            // In a real app, we would make a fetch() call here.
+            // fetch(`https://newsapi.org/v2/everything?q=${trend.name}&apiKey=YOUR_API_KEY`)
+
+            // Mock delay and response
+            setTimeout(() => {
+                // Generate dummy news relevant to the trend name
+                const mockHeadlines = [
+                    { title: `Why everyone is talking about ${trend.name} today`, source: "TechCrunch", time: "2 hours ago" },
+                    { title: `Market Analysis: The impact of ${trend.name} on global sector`, source: "Bloomberg", time: "4 hours ago" },
+                    { title: `Opinion: ${trend.name} marks a new era in ${trend.category}`, source: "The Verge", time: "5 hours ago" },
+                    { title: `Breaking: Major updates regarding ${trend.name}`, source: "Reuters", time: "Just now" }
+                ];
+
+                newsList.innerHTML = mockHeadlines.map(news => `
+                    <div class="news-item">
+                        <a href="#" class="news-link" onclick="event.preventDefault(); window.open('https://news.google.com/search?q=${encodeURIComponent(trend.name)}', '_blank')">
+                            <span class="news-title">${news.title}</span>
+                            <span class="news-meta">
+                                <span>${news.source}</span>
+                                <span>${news.time}</span>
+                            </span>
+                        </a>
+                    </div>
+                `).join('');
+            }, 600); // 600ms fake delay
         }
 
         panel.classList.add('active');

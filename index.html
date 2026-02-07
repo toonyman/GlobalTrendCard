@@ -71,6 +71,29 @@
 
             <!-- Dashboard Toolbar (Stats + Controls) -->
             <section class="dashboard-toolbar">
+                <!-- Insert Daily Briefing Here -->
+                <div class="daily-briefing" id="dailyBriefing">
+                    <div class="briefing-trend" id="topTrendCard">
+                        <div class="top-trend-label">🔥 Trending #1</div>
+                        <div class="top-trend-name" id="topTrendName">-</div>
+                        <div class="top-trend-stats">
+                            <span id="topTrendVol">-</span> • <span id="topTrendChange">-</span>
+                        </div>
+                        <a href="#" target="_blank" class="top-trend-link" id="topTrendLink">
+                            View on Google Trends ↗
+                        </a>
+                    </div>
+                    <div class="briefing-insight">
+                        <div class="briefing-header">
+                            <span class="briefing-icon">✨</span>
+                            <h3>Today's AI Insight</h3>
+                        </div>
+                        <div class="briefing-content" id="aiSummary">
+                            <div class="loading-pulse">Analyzing global trend data...</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="stats-group">
                     <div class="stat-item">
                         <span class="stat-label">Trends</span>
@@ -115,34 +138,52 @@
             <div class="info-header" id="infoHeader">
                 <h2 id="infoTitle" style="color: #fff; margin: 0; font-size: 1.8rem;">트렌드 제목</h2>
             </div>
-            <div class="info-content" style="display: grid; gap: 1rem; padding: 2rem;">
-                <div
-                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
-                    <span style="color: var(--text-muted);">Category</span>
-                    <span id="infoCategory" style="font-weight: 600;">-</span>
-                </div>
-                <div
-                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
-                    <span style="color: var(--text-muted);">Search Volume</span>
-                    <span id="infoVolume" style="font-weight: 600;">-</span>
-                </div>
-                <div
-                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
-                    <span style="color: var(--text-muted);">24h Change</span>
-                    <span id="infoChange" style="font-weight: 700;">-</span>
-                </div>
-                <div
-                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
-                    <span style="color: var(--text-muted);">Peak Time</span>
-                    <span id="infoPeakTime">-</span>
-                </div>
-                <div
-                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
-                    <span style="color: var(--text-muted);">Region</span>
-                    <span id="infoRegion">-</span>
+            <div class="info-content">
+                <div class="info-body-grid">
+                    <div class="info-stats-col">
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Category</span>
+                            <span id="infoCategory" style="font-weight: 600;">-</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Search Volume</span>
+                            <span id="infoVolume" style="font-weight: 600;">-</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">24h Change</span>
+                            <span id="infoChange" style="font-weight: 700;">-</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Peak Time</span>
+                            <span id="infoPeakTime">-</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Region</span>
+                            <span id="infoRegion">-</span>
+                        </div>
+                        <a class="google-trends-btn" id="googleTrendsBtn" target="_blank"
+                            style="margin-top: 1.5rem;">View on Google Trends →</a>
+                    </div>
+                    <div class="info-news-col">
+                        <div class="news-section">
+                            <h3
+                                style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="color: var(--accent-primary);">📰</span> Related News
+                            </h3>
+                            <div id="newsList" class="news-list"
+                                style="display: flex; flex-direction: column; gap: 0.8rem;">
+                                <!-- News items will be injected here -->
+                                <div style="color: var(--text-muted); font-size: 0.9rem;">No recent news found.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <a class="google-trends-btn" id="googleTrendsBtn" target="_blank">View on Google Trends →</a>
         </aside>
 
         <!-- Raw Data Modal -->
