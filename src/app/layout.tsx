@@ -12,6 +12,9 @@ const notoSansKr = Noto_Sans_KR({
 export const metadata: Metadata = {
   title: "Global Trends Bubble | Real-Time Trending Topics Visualization",
   description: "Discover what's trending globally with our interactive treemap visualization. Track real-time search trends across multiple categories.",
+  other: {
+    "google-adsense-account": "ca-pub-7644009675634803",
+  },
 };
 
 export default function RootLayout({
@@ -36,6 +39,13 @@ export default function RootLayout({
             gtag('config', 'G-FX72L5VF0D');
           `}
         </Script>
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7644009675634803"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
