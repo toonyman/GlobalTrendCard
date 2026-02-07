@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const notoSansKr = Noto_Sans_KR({
@@ -21,6 +22,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSansKr.variable}`} suppressHydrationWarning>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FX72L5VF0D"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-FX72L5VF0D');
+          `}
+        </Script>
         {children}
       </body>
     </html>
